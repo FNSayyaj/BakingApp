@@ -1,0 +1,41 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:baselineAligned="false"
+    android:divider="?android:attr/dividerHorizontal"
+    android:orientation="horizontal"
+    android:showDividers="middle"
+    android:id="@+id/ingredientsStepsLinearLayout"
+    tools:context="com.aboelfer.knightrider.bakingapp.Activities.IngredientsStepsActivity">
+
+    <!-- This layout is a two-pane layout for the master/detail flow. -->
+
+    <!-- The static MasterListFragment -->
+
+        <FrameLayout
+            android:id="@+id/ingredientsStepsContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+    <!-- A small divider -->
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray" />
+
+    <!-- The Detail Fragment -->
+
+        <FrameLayout
+            android:id="@+id/stepDetailContainer"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"/>
+
+
+</LinearLayout>

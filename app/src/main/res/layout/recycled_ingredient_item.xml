@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.aboelfer.knightrider.bakingappv01.IngredientsStepsActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ingredientRelativeLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ingredientNameTv"
+            android:id="@+id/ingredientNameTv"
+            android:paddingLeft="5dp"/>
+
+        <TextView
+            android:id="@+id/ingredientNameEv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/ingredientNameTv"
+            tools:text="Graham Cracker crumbs"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/separator"
+            android:background="@android:color/darker_gray"
+            android:layout_below="@id/ingredientNameEv"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/separator"
+            android:text="@string/quantityMeasureTv"
+            android:id="@+id/quantityMeasureTv"
+            android:paddingLeft="5dp"/>
+
+        <TextView
+            android:id="@+id/quantityEv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ingredientNameEv"
+            android:layout_toEndOf="@+id/quantityMeasureTv"
+            tools:text="2" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:id="@+id/separator2"
+            android:background="@android:color/holo_red_dark"
+            android:layout_below="@id/quantityMeasureTv"/>
+
+        <TextView
+            android:id="@+id/measureEv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/separator"
+            android:layout_toEndOf="@+id/quantityEv"
+            tools:text="CUPS" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

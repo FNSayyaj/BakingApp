@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context="com.aboelfer.knightrider.bakingapp.Activities.RecipesActivity">
+
+        <TextView
+            android:id="@+id/ingredientsTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ingredientsTv"
+            android:textSize="20sp"
+            android:background="@drawable/back"
+            android:textStyle="bold|italic"
+            android:gravity="center"
+            android:textAlignment="center"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/ingredientRecyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ingredientsTv"/>
+
+        <TextView
+            android:id="@+id/stepsTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/stepsTv"
+            android:textSize="20sp"
+            android:background="@drawable/back"
+            android:textStyle="bold|italic"
+            android:textAlignment="center"
+            android:layout_below="@id/ingredientRecyclerview"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/stepRecyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/stepsTv"/>
+
+        <Button
+            android:id="@+id/addRecipeToWidgetBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/addRecipeToWidgetBtn"
+            android:layout_below="@+id/stepRecyclerview"
+            />
+
+    </RelativeLayout>
+
+</ScrollView>

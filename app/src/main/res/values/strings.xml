@@ -1,0 +1,69 @@
+<resources>
+
+    <string name="app_name">BakingApp</string>
+    <string name="toast_confirm_adding_recipe_to_widget">Recipe Added to Widget</string>
+    <string name="no_connectivity_error">Error, No Internet Connectivity Detected Please Check Your Network Connection</string>
+
+    <!--Layout views strings-->
+    <string name="ingredientsTv">Recipe Ingredients</string>
+    <string name="stepsTv">Recipe Steps</string>
+    <string name="addRecipeToWidgetBtn">ADD RECIPE TO WIDGET</string>
+    <string name="stepDescriptionTv">Step Description</string>
+    <string name="noVideoIv">Image that appears when there is no video provided from JSON file</string>
+    <string name="widgetIngredients">Ingredients:</string>
+    <string name="ingredientNameTv">Ingredient Name:</string>
+    <string name="quantityMeasureTv">Quantity and Measure :</string>
+
+    <!--Volley keys for parsing recipe's-->
+    <string name="RECIPE_ID_KEY">id</string>
+    <string name="RECIPE_NAME_KEY">name</string>
+    <string name="RECIPE_INGREDIENTS_KEY">ingredients</string>
+    <string name="RECIPE_STEPS_KEY">steps</string>
+    <string name="RECIPE_SERVINGS_KEY">servings</string>
+    <string name="RECIPE_IMAGES_KEY">image</string>
+
+    <!--Volley keys for parsing ingredient's-->
+    <string name="INGREDIENTS_KEY">ingredients</string>
+    <string name="INGREDIENT_QUANTITY_KEY">quantity</string>
+    <string name="INGREDIENT_MEASURE_KEY">measure</string>
+    <string name="INGREDIENT_NAME_KEY">ingredient</string>
+
+    <!--Volley keys for parsing step's-->
+    <string name="STEPS_KEY">steps</string>
+    <string name="STEPS_ID_KEY">id</string>
+    <string name="STEPS_SHORT_DESCRIPTION_KEY">shortDescription</string>
+    <string name="STEPS_FULL_DESCRIPTION_KEY">description</string>
+    <string name="STEPS_VIDEO_URL_KEY">videoURL</string>
+    <string name="STEPS_THUMBNAIL_URL_KEY">thumbnailURL</string>
+
+    <!--Keys for intents-->
+    <string name="RECIPE_ID_INTENT_KEY">ID</string>
+    <string name="RECIPE_NAME_INTENT_KEY">NAME</string>
+    <string name="STEP_ID_INTENT_KEY">stepId</string>
+    <string name="STEP_SHORT_DESCRIPTION_INTENT_KEY">stepShortDescription</string>
+    <string name="STEP_FULL_DESCRIPTION_INTENT_KEY">stepFullDescription</string>
+    <string name="STEP_VIDEO_URL_INTENT_KEY">stepVideoUrl</string>
+
+
+    <!--Keys for bundles-->
+    <string name="TWO_PANE_SITUATION">mTwoPane</string>
+    <string name="RECIPE_ID_BUNDLES_KEY">recipeId</string>
+    <string name="RECIPE_NAME_BUNDLES_KEY">recipeName</string>
+    <string name="STEP_ID_BUNDLES_KEY">stepId</string>
+    <string name="STEP_SHORT_DESCRIPTION_BUNDLES_KEY">stepShortDescription</string>
+    <string name="STEP_FULL_DESCRIPTION_BUNDLES_KEY">stepFullDescription</string>
+    <string name="STEP_VIDEO_URL_BUNDLES_KEY">stepVideoUrl</string>
+
+    <!--SharedPreferences keys-->
+    <string name="SHARED_PREFERENCE_KEY">selectedRecipe</string>
+    <string name="SHARED_PREFERENCE_RECIPE_NAME_KEY">recipeName</string>
+    <string name="SHARED_PREFERENCE_INGREDIENTS_KEY">recipeIngredients</string>
+
+    <!--Widget provider strings-->
+    <string name="NO_RECIPE_NAME_AVAILABLE" translatable="false">Pick A Recipe Within the App</string>
+    <string name="NO_RECIPE_INGREDIENTS_AVAILABLE">Ingredients Goes Here When You Pick A Recipe</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

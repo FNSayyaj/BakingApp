@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="8dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/widgetRecipeTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sugarfont"
+        android:textColor="@color/colorTextSecondary"
+        android:background="@drawable/back"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:textAlignment="gravity"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/widgetIngredients"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sugarfont"
+        android:textColor="@color/colorTextSecondary"
+        android:background="@drawable/back"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textAlignment="gravity"
+        android:padding="5dp"
+        android:text="@string/widgetIngredients"/>
+
+    <TextView
+        android:id="@+id/widgetIngredientTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sugarfont"
+        android:textColor="@color/colorTextSecondary"
+        android:background="@drawable/back"
+        android:textStyle="bold"
+        android:padding="5dp"/>
+
+</LinearLayout>

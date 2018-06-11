@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.aboelfer.knightrider.bakingappv01.RecipesActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recipeRelativeLayout">
+
+    <TextView
+        android:id="@+id/recipeName"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/back"
+        android:textAlignment="gravity"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="25sp"
+        tools:text="Loading Recipe Name" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
