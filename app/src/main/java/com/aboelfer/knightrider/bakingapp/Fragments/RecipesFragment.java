@@ -1,11 +1,12 @@
 package com.aboelfer.knightrider.bakingapp.Fragments;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -48,8 +49,13 @@ public class RecipesFragment extends Fragment implements RecipesAdapter.ListReci
     private final String URL = "https://d17h27t6h515a5.cloudfront.net/topher/2017/May/59121517_baking/baking.json";
     SimpleIdlingResource idlingResource;
 
+
+
     @BindView(R.id.recipeFragmentRecyeclerview)
     RecyclerView recipesRecyclerView;
+
+    @BindView(R.id.coordinatorLayout)
+    CoordinatorLayout coordinatorLayout;
 
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
@@ -126,10 +132,25 @@ public class RecipesFragment extends Fragment implements RecipesAdapter.ListReci
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }, error -> Toast.makeText(getContext(),
-                getContext().getText(R.string.no_connectivity_error),
-                Toast.LENGTH_LONG).show()
-        );
+        }, error ->
+            {
+                Snackbar snackbar = Snackbar
+                        .make(coordinatorLayout, "No internet connection!", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("RETRY", view -> {
+
+                            loadRecipesData(url);
+                        });
+
+                // Changing message text color
+                snackbar.setActionTextColor(Color.RED);
+
+                // Changing action button text color
+                View sbView = snackbar.getView();
+                TextView textView = sbView.findViewById(android.support.design.R.id.snackbar_text);
+                textView.setTextColor(Color.YELLOW);
+
+                snackbar.show();
+            });
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
 

@@ -23,19 +23,19 @@
         </activity>
 
         <activity android:name=".Activities.IngredientsStepsActivity"
-            android:parentActivityName=".Activities.RecipesActivity"/>
+            android:parentActivityName=".Activities.RecipesActivity" />
 
-        <activity android:name=".Activities.StepDetailsActivity" />
+        <activity android:name=".Activities.StepDetailsActivity"/>
 
         <receiver android:name=".Widget.RecipeIngredientsWidgetProvider">
 
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
             </intent-filter>
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/recipe_ingredients_widget_info" />
+                android:resource="@xml/recipe_ingredients_widget_info"/>
 
         </receiver>
 

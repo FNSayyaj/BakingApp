@@ -15,7 +15,7 @@ import java.util.Objects;
 
 public class StepDetailsActivity extends AppCompatActivity {
 
-    private String stepId, shortDescription, fullDescription, videoUrl;
+    private String stepId, shortDescription, fullDescription, videoUrl, thumbnailURL;
 
 
     @Override
@@ -28,6 +28,7 @@ public class StepDetailsActivity extends AppCompatActivity {
             shortDescription = intent.getStringExtra(getString(R.string.STEP_SHORT_DESCRIPTION_INTENT_KEY));
             fullDescription = intent.getStringExtra(getString(R.string.STEP_FULL_DESCRIPTION_INTENT_KEY));
             videoUrl = intent.getStringExtra(getString(R.string.STEP_VIDEO_URL_INTENT_KEY));
+            thumbnailURL = intent.getStringExtra(getString(R.string.STEP_THUMBNAIL_URL_INTENT_KEY));
 
         }
 
@@ -55,6 +56,7 @@ public class StepDetailsActivity extends AppCompatActivity {
             bundle.putString(getString(R.string.STEP_SHORT_DESCRIPTION_BUNDLES_KEY), shortDescription);
             bundle.putString(getString(R.string.STEP_FULL_DESCRIPTION_BUNDLES_KEY), fullDescription);
             bundle.putString(getString(R.string.STEP_VIDEO_URL_BUNDLES_KEY), videoUrl);
+            bundle.putString(getString(R.string.STEP_THUMBNAIL_URL_BUNDLES_KEY), thumbnailURL);
             stepsDetailFragment.setArguments(bundle);
 
             //Use a FragmentManager and transaction to add the fragment to the screen

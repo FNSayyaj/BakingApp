@@ -8,15 +8,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.aboelfer.knightrider.bakingapp.Activities.StepDetailsActivity;
@@ -52,15 +55,19 @@ public class IngredientsStepsFragment extends Fragment implements StepsAdapter.L
     private int id;
     boolean mTwoPane;
     private String recipeName;
+    LinearLayoutManager layoutIngredientsManager;
+    LinearLayoutManager layoutStepsManager;
+    private Parcelable mListStateI;
+    private Parcelable mListStateS;
+    public static final String I_RECYCLER_VIEW_STATE = "recycler1ViewScroll";
+    public static final String S_RECYCLER_VIEW_STATE = "recycler1ViewScroll";
+
 
     @BindView(R.id.ingredientRecyclerview)
     RecyclerView ingredientsRecyclerView;
 
     @BindView(R.id.stepRecyclerview)
     RecyclerView stepsRecyclerView;
-
-    @BindView(R.id.addRecipeToWidgetBtn)
-    Button addRecipeToWidgetBtn;
 
     public IngredientsStepsFragment(){
 
@@ -76,15 +83,23 @@ public class IngredientsStepsFragment extends Fragment implements StepsAdapter.L
 
         ButterKnife.bind(this, rootView);
 
-        LinearLayoutManager layoutIngredientsManager;
+        setHasOptionsMenu(true);
+
+
         layoutIngredientsManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         ingredientsRecyclerView.setLayoutManager(layoutIngredientsManager);
+        if (savedInstanceState != null) {
+            mListStateI = savedInstanceState.getParcelable(I_RECYCLER_VIEW_STATE);
+        }
         ingredientsRecyclerView.setHasFixedSize(true);
         ingredientList = new ArrayList<>();
 
-        LinearLayoutManager layoutStepsManager;
+
         layoutStepsManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         stepsRecyclerView.setLayoutManager(layoutStepsManager);
+        if (savedInstanceState != null) {
+            mListStateS = savedInstanceState.getParcelable(S_RECYCLER_VIEW_STATE);
+        }
         stepsRecyclerView.setHasFixedSize(true);
         stepList = new ArrayList<>();
 
@@ -98,20 +113,6 @@ public class IngredientsStepsFragment extends Fragment implements StepsAdapter.L
 
         loadIngredientsData(URL, id);
         loadStepsData(URL, id);
-
-        addRecipeToWidgetBtn.setOnClickListener(v -> {
-
-            StringBuilder stringBuilder = new StringBuilder();
-
-            for (int i = 0; i < ingredientList.size(); i++) {
-
-                String ingredientName = ingredientList.get(i).getIngredient();
-                stringBuilder.append(i + 1).append(" - ").append(ingredientName).append(".").append("\n");
-            }
-
-            updateWidget(recipeName, stringBuilder.toString());
-            Toast.makeText(getContext(), getString(R.string.toast_confirm_adding_recipe_to_widget), Toast.LENGTH_SHORT).show();
-        });
 
         return rootView;
     }
@@ -168,6 +169,7 @@ public class IngredientsStepsFragment extends Fragment implements StepsAdapter.L
                 stepsAdapter = new StepsAdapter(stepList, getContext(), this);
                 stepsRecyclerView.setAdapter(stepsAdapter);
 
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -177,6 +179,7 @@ public class IngredientsStepsFragment extends Fragment implements StepsAdapter.L
         );
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
+
 
     }
 
@@ -215,7 +218,9 @@ public class IngredientsStepsFragment extends Fragment implements StepsAdapter.L
             intent.putExtra(getString(R.string.STEP_ID_INTENT_KEY), step.getId());
             intent.putExtra(getString(R.string.STEP_SHORT_DESCRIPTION_INTENT_KEY), step.getShortDescription());
             intent.putExtra(getString(R.string.STEP_FULL_DESCRIPTION_INTENT_KEY), step.getDescription());
+            intent.putExtra(getString(R.string.STEP_THUMBNAIL_URL_INTENT_KEY), step.getThumbnailURL());
             intent.putExtra(getString(R.string.STEP_VIDEO_URL_INTENT_KEY), step.getVideoURLs());
+
             getContext().startActivity(intent);
         }
         else {
@@ -227,6 +232,7 @@ public class IngredientsStepsFragment extends Fragment implements StepsAdapter.L
             bundle.putString(getString(R.string.STEP_SHORT_DESCRIPTION_BUNDLES_KEY), step.getShortDescription());
             bundle.putString(getString(R.string.STEP_FULL_DESCRIPTION_BUNDLES_KEY), step.getDescription());
             bundle.putString(getString(R.string.STEP_VIDEO_URL_BUNDLES_KEY), step.getVideoURLs());
+            bundle.putString(getString(R.string.STEP_THUMBNAIL_URL_BUNDLES_KEY), step.getThumbnailURL());
             bundle.putBoolean(getString(R.string.TWO_PANE_SITUATION), mTwoPane);
 
             StepDetailsFragment stepsDetailFragment = new StepDetailsFragment();
@@ -237,6 +243,59 @@ public class IngredientsStepsFragment extends Fragment implements StepsAdapter.L
 
         }
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mListStateI != null) {
+            //Restoring recycler view state
+            layoutIngredientsManager.onRestoreInstanceState(mListStateI);
+            layoutStepsManager.onRestoreInstanceState(mListStateS);
+        }
+
+    }
+
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        //storing recycler view state
+        outState.putParcelable(I_RECYCLER_VIEW_STATE, layoutStepsManager.onSaveInstanceState());
+        outState.putParcelable(S_RECYCLER_VIEW_STATE, layoutIngredientsManager.onSaveInstanceState());
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
+        getActivity().getMenuInflater().inflate(R.menu.main, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int itemId = item.getItemId();
+
+        switch (itemId) {
+
+            case R.id.action_refresh_widget:
+                StringBuilder stringBuilder = new StringBuilder();
+
+                for (int i = 0; i < ingredientList.size(); i++) {
+
+                    String ingredientName = ingredientList.get(i).getIngredient();
+                    stringBuilder.append(i + 1).append(" - ").append(ingredientName).append(".").append("\n");
+                }
+
+                updateWidget(recipeName, stringBuilder.toString());
+                Toast.makeText(getContext(), getString(R.string.toast_confirm_adding_recipe_to_widget), Toast.LENGTH_SHORT).show();
+
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
 

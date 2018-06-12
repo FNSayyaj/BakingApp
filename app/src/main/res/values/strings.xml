@@ -43,6 +43,7 @@
     <string name="STEP_SHORT_DESCRIPTION_INTENT_KEY">stepShortDescription</string>
     <string name="STEP_FULL_DESCRIPTION_INTENT_KEY">stepFullDescription</string>
     <string name="STEP_VIDEO_URL_INTENT_KEY">stepVideoUrl</string>
+    <string name="STEP_THUMBNAIL_URL_INTENT_KEY">stepThumbnailURL</string>
 
 
     <!--Keys for bundles-->
@@ -53,6 +54,7 @@
     <string name="STEP_SHORT_DESCRIPTION_BUNDLES_KEY">stepShortDescription</string>
     <string name="STEP_FULL_DESCRIPTION_BUNDLES_KEY">stepFullDescription</string>
     <string name="STEP_VIDEO_URL_BUNDLES_KEY">stepVideoUrl</string>
+    <string name="STEP_THUMBNAIL_URL_BUNDLES_KEY">stepThumbnailURL</string>
 
     <!--SharedPreferences keys-->
     <string name="SHARED_PREFERENCE_KEY">selectedRecipe</string>
