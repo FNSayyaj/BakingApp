@@ -62,7 +62,6 @@ public class IngredientsStepsFragment extends Fragment implements StepsAdapter.L
     public static final String I_RECYCLER_VIEW_STATE = "recycler1ViewScroll";
     public static final String S_RECYCLER_VIEW_STATE = "recycler1ViewScroll";
 
-
     @BindView(R.id.ingredientRecyclerview)
     RecyclerView ingredientsRecyclerView;
 
